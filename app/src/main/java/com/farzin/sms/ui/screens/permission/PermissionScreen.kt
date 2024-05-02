@@ -33,6 +33,28 @@ fun PermissionScreen(navController: NavController) {
             },
             permissionTxt = "allow send sms permission"
         )
+
+        val readSMSPermission = rememberPermissionState(Manifest.permission.READ_SMS)
+        PermissionRow(
+            onPermissionGranted = { },
+            checked = readSMSPermission.status.isGranted,
+            onCheckedChange = {
+                readSMSPermission.launchPermissionRequest()
+            },
+            permissionTxt = "allow read sms permission"
+        )
+
+        val receiveSMSPermission = rememberPermissionState(Manifest.permission.RECEIVE_SMS)
+        PermissionRow(
+            onPermissionGranted = { },
+            checked = receiveSMSPermission.status.isGranted,
+            onCheckedChange = {
+                receiveSMSPermission.launchPermissionRequest()
+            },
+            permissionTxt = "allow receive sms permission"
+        )
+
+
         Button(
             onClick = {
                 if (sendSMSPermission.status.isGranted) {
@@ -42,6 +64,8 @@ fun PermissionScreen(navController: NavController) {
                 }
             },
             enabled = sendSMSPermission.status.isGranted
+                    && readSMSPermission.status.isGranted
+                    && receiveSMSPermission.status.isGranted
 
         ) {
             Text(text = "Proceed")

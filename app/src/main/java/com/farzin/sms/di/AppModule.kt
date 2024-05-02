@@ -1,5 +1,6 @@
 package com.farzin.sms.di
 
+import android.app.NotificationManager
 import android.content.Context
 import android.os.Build
 import android.telephony.SmsManager
@@ -17,7 +18,12 @@ object AppModule {
     @Provides
     @Singleton
     fun provideSms(
-        @ApplicationContext context:Context
+        @ApplicationContext context: Context,
     ): SmsManager = context.getSystemService(SmsManager::class.java)
+
+    @Provides
+    @Singleton
+    fun provideNotificationManager(@ApplicationContext context: Context) =
+        context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
 }
