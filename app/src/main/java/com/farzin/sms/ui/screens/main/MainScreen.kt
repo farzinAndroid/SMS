@@ -1,6 +1,5 @@
 package com.farzin.sms.ui.screens.main
 
-import android.Manifest
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -19,14 +18,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.farzin.sms.viewModel.MainScreenViewmodel
-import com.google.accompanist.permissions.ExperimentalPermissionsApi
-import com.google.accompanist.permissions.isGranted
-import com.google.accompanist.permissions.rememberPermissionState
+import com.farzin.sms.viewModel.SMSViewmodel
 
-@OptIn(ExperimentalPermissionsApi::class)
 @Composable
-fun MainScreen(mainScreenViewmodel: MainScreenViewmodel = hiltViewModel()) {
+fun MainScreen(smsViewmodel: SMSViewmodel = hiltViewModel()) {
 
     var phoneNumber by remember {
         mutableStateOf("")
@@ -71,7 +66,7 @@ fun MainScreen(mainScreenViewmodel: MainScreenViewmodel = hiltViewModel()) {
             if (phoneNumber.isNotBlank() || phoneNumber.isNotEmpty() &&
                 smsMessage.isNotBlank() || smsMessage.isNotEmpty()
             ) {
-                mainScreenViewmodel.sendSMS(phoneNumber, smsMessage)
+                smsViewmodel.sendSMS(phoneNumber, smsMessage)
             }
         }) {
             Text(text = "send Message")
