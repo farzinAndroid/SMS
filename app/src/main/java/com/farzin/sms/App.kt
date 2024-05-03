@@ -6,6 +6,7 @@ import android.app.NotificationManager
 import android.content.Context
 import android.os.Build
 import com.farzin.sms.data.NotificationService
+import com.farzin.sms.util.NotificationHelper
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
@@ -18,7 +19,7 @@ class App : Application() {
     private fun createNotificationChannel(){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             val channel = NotificationChannel(
-                NotificationService.NOTIFICATION_CHANNEL_ID,
+                NotificationHelper.NOTIFICATION_CHANNEL_ID,
                 "SMS",
                 NotificationManager.IMPORTANCE_HIGH
             )

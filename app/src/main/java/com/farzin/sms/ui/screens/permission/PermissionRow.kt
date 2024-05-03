@@ -2,7 +2,6 @@ package com.farzin.sms.ui.screens.permission
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -15,7 +14,6 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun PermissionRow(
-    onPermissionGranted: () -> Unit,
     checked: Boolean,
     onCheckedChange: (Boolean) -> Unit,
     permissionTxt: String,
@@ -24,8 +22,9 @@ fun PermissionRow(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .fillMaxHeight(0.1f)
-            .padding(horizontal = 16.dp),
+            .height(60.dp)
+            .padding(horizontal = 16.dp)
+            .padding(top = 10.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
@@ -36,10 +35,6 @@ fun PermissionRow(
             checked = checked,
             onCheckedChange = onCheckedChange
         )
-
-        if (checked) {
-            onPermissionGranted()
-        }
 
     }
 
