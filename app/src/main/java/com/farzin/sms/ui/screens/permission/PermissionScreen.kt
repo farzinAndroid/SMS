@@ -76,6 +76,8 @@ fun PermissionScreen(navController: NavController) {
         Button(
             onClick = {
                 if (sendSMSPermission.status.isGranted && notificationPermission.status.isGranted) {
+                    // after granting permissions always destroy the permissions screen
+                    // so we cant go back to it after clicking back press
                     navController.navigate(Screens.Main.route) {
                         popUpTo(Screens.Permission.route) {
                             inclusive = true

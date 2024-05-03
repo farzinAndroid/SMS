@@ -1,4 +1,4 @@
-package com.farzin.sms.data
+package com.farzin.sms.data.notification
 
 import android.app.NotificationManager
 import android.content.Context

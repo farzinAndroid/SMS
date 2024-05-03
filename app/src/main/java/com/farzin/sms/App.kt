@@ -5,7 +5,6 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
 import android.os.Build
-import com.farzin.sms.data.NotificationService
 import com.farzin.sms.util.NotificationHelper
 import dagger.hilt.android.HiltAndroidApp
 
@@ -16,6 +15,8 @@ class App : Application() {
         createNotificationChannel()
     }
 
+    // create notif channel only for api level
+    // above 26
     private fun createNotificationChannel(){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             val channel = NotificationChannel(

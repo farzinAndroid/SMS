@@ -15,6 +15,9 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
+
+    // DI for the whole app
+
     @Provides
     @Singleton
     fun provideSms(

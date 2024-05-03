@@ -34,6 +34,8 @@ class MainActivity : ComponentActivity() {
                 ) {
                     val navController = rememberNavController()
 
+                    // check if the permissions are granted and based
+                    // on that navigate to appropriate destination
                     val startDestination =
                         if (isSMSPermissionsGranted(this)
                             && isNotificationPermissionsGranted(this)) Screens.Main.route

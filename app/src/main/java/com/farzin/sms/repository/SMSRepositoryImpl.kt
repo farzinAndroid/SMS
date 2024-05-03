@@ -10,6 +10,9 @@ class SMSRepositoryImpl @Inject constructor(
 ) : SMSRepository {
 
     override suspend fun sendSMS(phoneNumber: String, textMsg: String) {
+        // use the IO Dispathers to
+        // not freeze the UI
+
         withContext(Dispatchers.IO){
             smsManager.sendTextMessage(phoneNumber,null,textMsg,null,null)
         }
